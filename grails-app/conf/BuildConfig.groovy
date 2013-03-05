@@ -48,26 +48,30 @@ grails.project.dependency.resolution = {
       test("org.seleniumhq.selenium:selenium-support:${webdriverVersion}")
       test("org.seleniumhq.selenium:selenium-chrome-driver:${webdriverVersion}")
       test("org.seleniumhq.selenium:selenium-firefox-driver:${webdriverVersion}")
+
+      test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
     }
 
     plugins {
-        runtime ":hibernate:$grailsVersion"
-        runtime ":jquery:1.8.3"
-        runtime ":resources:1.1.6"
+      runtime ":hibernate:$grailsVersion"
+      runtime ":jquery:1.8.3"
+      runtime ":resources:1.1.6"
 
-        // Uncomment these (or add new ones) to enable additional resources capabilities
-        //runtime ":zipped-resources:1.0"
-        //runtime ":cached-resources:1.0"
-        //runtime ":yui-minify-resources:0.1.4"
+      // Uncomment these (or add new ones) to enable additional resources capabilities
+      //runtime ":zipped-resources:1.0"
+      //runtime ":cached-resources:1.0"
+      //runtime ":yui-minify-resources:0.1.4"
 
-        build ":tomcat:$grailsVersion"
+      build ":tomcat:$grailsVersion"
 
-        runtime ":database-migration:1.2.1"
+      runtime ":database-migration:1.2.1"
 
-        compile ':cache:1.0.1'
+      compile ':cache:1.0.1'
 
       test ":remote-control:1.4"
       test ":geb:${gebVersion}"
-      test ":spock:0.7"
+      test(":spock:0.7") {
+        exclude "spock-grails-support"
+      }
     }
 }
