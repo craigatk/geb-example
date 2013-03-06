@@ -11,7 +11,7 @@ grails.project.source.level = 1.6
 //   run: [maxMemory:1024, minMemory:64, debug:false, maxPerm:256]
 //]
 
-def gebVersion = "0.7.2"
+def gebVersion = "0.9.0-RC-1"
 def webdriverVersion = "2.28.0"
 
 grails.project.dependency.resolution = {
@@ -42,8 +42,8 @@ grails.project.dependency.resolution = {
     }
 
     dependencies {
-      test "org.codehaus.geb:geb-junit4:${gebVersion}"
-      test "org.codehaus.geb:geb-spock:${gebVersion}"
+      test "org.gebish:geb-junit4:${gebVersion}"
+      test "org.gebish:geb-spock:${gebVersion}"
 
       test("org.seleniumhq.selenium:selenium-support:${webdriverVersion}")
       test("org.seleniumhq.selenium:selenium-chrome-driver:${webdriverVersion}")
