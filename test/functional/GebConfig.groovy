@@ -5,11 +5,11 @@
 */
 
 
-import org.apache.commons.lang.SystemUtils
-import org.openqa.selenium.firefox.FirefoxDriver
-import org.openqa.selenium.chrome.ChromeDriver
-import org.openqa.selenium.ie.InternetExplorerDriver
 
+import org.apache.commons.lang.SystemUtils
+import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.firefox.FirefoxDriver
+import org.openqa.selenium.ie.InternetExplorerDriver
 // Use Firefox as the default driver
 // See: http://code.google.com/p/selenium/wiki/FirefoxDriver
 driver = { new FirefoxDriver() }
@@ -18,7 +18,7 @@ driver = { new FirefoxDriver() }
 // http://fbflex.wordpress.com/2013/01/06/geb-quickie-automatically-download-drivers-for-chrome-and-internet-explorer/
 environments {
 
-  // run as “grails -Dgeb.env=chrome test-app”
+  // run as "grails -Dgeb.env=chrome test-app"
   // See: http://code.google.com/p/selenium/wiki/ChromeDriver
   chrome {
     String chromeDriverVersion = "26.0.1383.0"
@@ -47,7 +47,7 @@ environments {
     driver = { new ChromeDriver() }
   }
 
-  // run as “grails -Dgeb.env=ie test-app”
+  // run as "grails -Dgeb.env=ie test-app"
   // See: https://code.google.com/p/selenium/wiki/InternetExplorerDriver
   ie {
     String ieDriverVersion = "2.31.0"

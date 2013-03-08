@@ -12,7 +12,7 @@ grails.project.source.level = 1.6
 //]
 
 def gebVersion = "0.9.0-RC-1"
-def webdriverVersion = "2.28.0"
+def webdriverVersion = "2.31.0"
 
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
@@ -20,7 +20,7 @@ grails.project.dependency.resolution = {
         // specify dependency exclusions here; for example, uncomment this to disable ehcache:
         // excludes 'ehcache'
     }
-    log "error" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
+    log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     checksums true // Whether to verify checksums on resolve
     legacyResolve false // whether to do a secondary resolve on plugin installation, not advised and here for backwards compatibility
 
