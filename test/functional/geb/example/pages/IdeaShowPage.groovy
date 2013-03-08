@@ -1,6 +1,6 @@
 package geb.example.pages
 
-class ShowIdeaPage extends geb.Page {
+class IdeaShowPage extends geb.Page {
   static at = { $("div#show-idea").displayed }
 
   static content = {

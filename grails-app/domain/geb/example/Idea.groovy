@@ -1,6 +1,8 @@
 package geb.example
 
-class Idea {
+class Idea implements Serializable {
+  private static final long serialVersionUID = 1L
+
   String title
   String description
 

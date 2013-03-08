@@ -1,6 +1,6 @@
 package geb.example.pages
 
-class CreateIdeaPage extends geb.Page {
+class IdeaCreatePage extends geb.Page {
   static url = "idea/create"
   static at = { $("div#create-idea").displayed }
 
@@ -8,10 +8,10 @@ class CreateIdeaPage extends geb.Page {
     titleField(wait: true) { $("input#title") }
     descriptionField(wait: true) { $("textarea#description") }
 
-    createButton(wait: true, to: ShowIdeaPage) { $("input#create") }
+    createButton(wait: true, to: IdeaShowPage) { $("input#create") }
   }
 
-  ShowIdeaPage createIdea(String title, String description) {
+  IdeaShowPage createIdea(String title, String description) {
     titleField.value(title)
     descriptionField.value(description)
 
