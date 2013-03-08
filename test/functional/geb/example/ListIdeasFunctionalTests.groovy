@@ -9,6 +9,8 @@ class ListIdeasFunctionalTests extends geb.junit4.GebReportingTest {
 
   @Test
   void shouldListIdeas() {
+    ideaRemoteControl.deleteAllIdeas()
+
     List<Idea> ideas = (1..5).collect { i ->
       ideaRemoteControl.createIdea("Title ${i}", "Description ${i}")
     }

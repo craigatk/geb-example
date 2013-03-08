@@ -8,6 +8,8 @@ class ListIdeasFunctionalSpec extends geb.spock.GebReportingSpec {
 
   def "should list ideas"() {
     given: "five existing ideas"
+    ideaRemoteControl.deleteAllIdeas()
+
     List<Idea> ideas = (1..5).collect { i ->
       ideaRemoteControl.createIdea("Title ${i}", "Description ${i}")
     }

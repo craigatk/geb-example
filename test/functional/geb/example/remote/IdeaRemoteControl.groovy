@@ -22,4 +22,12 @@ class IdeaRemoteControl {
       Idea.findByTitle(title)
     }
   }
+
+  void deleteAllIdeas() {
+    remote {
+      Idea.list().each {
+        it.delete()
+      }
+    }
+  }
 }
