@@ -8,6 +8,7 @@
 import org.apache.commons.lang.SystemUtils
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.ie.InternetExplorerDriver
 
 // Use Firefox as the default driver
 // See: http://code.google.com/p/selenium/wiki/FirefoxDriver
@@ -35,7 +36,7 @@ environments {
       chromeDriverZipFileName = "chromedriver_linux32_${chromeDriverVersion}.zip"
       chromeDriverExecFileName = "chromedriver"
     } else {
-      throw new RuntimeException("Unknown operating system [${SystemUtils.OS_NAME}]")
+      throw new RuntimeException("Unsupported operating system [${SystemUtils.OS_NAME}]")
     }
 
     String chromeDriverDownloadFullPath = "https://chromedriver.googlecode.com/files/${chromeDriverZipFileName}"
@@ -44,6 +45,21 @@ environments {
 
     System.setProperty('webdriver.chrome.driver', chromeDriverLocalFile.absolutePath)
     driver = { new ChromeDriver() }
+  }
+
+  // run as “grails -Dgeb.env=ie test-app”
+  // See: https://code.google.com/p/selenium/wiki/InternetExplorerDriver
+  ie {
+    String ieDriverVersion = "2.31.0"
+
+    String ieDriverZipFileName = "IEDriverServer_Win32_${ieDriverVersion}.zip"
+
+    String ieDriverDownloadFullPath = "https://selenium.googlecode.com/files/${ieDriverZipFileName}"
+
+    File ieDriverLocalFile = downloadDriver(ieDriverDownloadFullPath, "IEDriverServer.exe")
+
+    System.setProperty('webdriver.ie.driver', ieDriverLocalFile.absolutePath)
+    driver = { new InternetExplorerDriver() }
   }
 }
 
