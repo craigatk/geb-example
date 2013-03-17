@@ -45,10 +45,10 @@ grails.project.dependency.resolution = {
       test "org.gebish:geb-junit4:${gebVersion}"
       test "org.gebish:geb-spock:${gebVersion}"
 
-      test("org.seleniumhq.selenium:selenium-support:${webdriverVersion}")
-      test("org.seleniumhq.selenium:selenium-chrome-driver:${webdriverVersion}")
-      test("org.seleniumhq.selenium:selenium-firefox-driver:${webdriverVersion}")
-      test("org.seleniumhq.selenium:selenium-ie-driver:${webdriverVersion}")
+      test "org.seleniumhq.selenium:selenium-support:${webdriverVersion}"
+      test "org.seleniumhq.selenium:selenium-chrome-driver:${webdriverVersion}"
+      test "org.seleniumhq.selenium:selenium-firefox-driver:${webdriverVersion}"
+      test "org.seleniumhq.selenium:selenium-ie-driver:${webdriverVersion}"
 
       test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
     }
