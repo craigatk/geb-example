@@ -12,6 +12,7 @@ grails.project.source.level = 1.6
 //]
 
 def gebVersion = "0.9.0"
+def phantomJSVersion = "1.0.3"
 def webdriverVersion = "2.31.0"
 
 grails.project.dependency.resolution = {
@@ -49,6 +50,10 @@ grails.project.dependency.resolution = {
       test "org.seleniumhq.selenium:selenium-chrome-driver:${webdriverVersion}"
       test "org.seleniumhq.selenium:selenium-firefox-driver:${webdriverVersion}"
       test "org.seleniumhq.selenium:selenium-ie-driver:${webdriverVersion}"
+
+      test("com.github.detro.ghostdriver:phantomjsdriver:${phantomJSVersion}") {
+        transitive = false
+      }
 
       test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
     }

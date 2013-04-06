@@ -7,9 +7,15 @@
 
 
 import org.apache.commons.lang.SystemUtils
+import org.openqa.selenium.Capabilities
+import org.openqa.selenium.Dimension
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.ie.InternetExplorerDriver
+import org.openqa.selenium.phantomjs.PhantomJSDriver
+import org.openqa.selenium.phantomjs.PhantomJSDriverService
+import org.openqa.selenium.remote.DesiredCapabilities
+
 // Use Firefox as the default driver
 // See: http://code.google.com/p/selenium/wiki/FirefoxDriver
 driver = { new FirefoxDriver() }
@@ -41,7 +47,7 @@ environments {
 
     String chromeDriverDownloadFullPath = "https://chromedriver.googlecode.com/files/${chromeDriverZipFileName}"
 
-    File chromeDriverLocalFile = downloadDriver(chromeDriverDownloadFullPath, chromeDriverExecFileName)
+    File chromeDriverLocalFile = downloadDriver(chromeDriverDownloadFullPath, chromeDriverExecFileName, 'zip')
 
     System.setProperty('webdriver.chrome.driver', chromeDriverLocalFile.absolutePath)
     driver = { new ChromeDriver() }
@@ -56,28 +62,73 @@ environments {
 
     String ieDriverDownloadFullPath = "https://selenium.googlecode.com/files/${ieDriverZipFileName}"
 
-    File ieDriverLocalFile = downloadDriver(ieDriverDownloadFullPath, "IEDriverServer.exe")
+    File ieDriverLocalFile = downloadDriver(ieDriverDownloadFullPath, "IEDriverServer.exe", 'zip')
 
     System.setProperty('webdriver.ie.driver', ieDriverLocalFile.absolutePath)
     driver = { new InternetExplorerDriver() }
   }
+
+  phantomjs {
+    String phantomJSVersion = '1.9.0'
+
+    String platform
+    String archiveExtension
+    String execFilePath
+
+    if (SystemUtils.IS_OS_WINDOWS) {
+      execFilePath = 'phantomjs.exe'
+      platform = 'windows'
+      archiveExtension = 'zip'
+    }
+    else if (SystemUtils.IS_OS_MAC_OSX) {
+      execFilePath = '/bin/phantomjs'
+      platform = 'macosx'
+      archiveExtension = 'zip'
+    } else if (SystemUtils.IS_OS_LINUX) {
+      execFilePath = '/bin/phantomjs'
+      platform = 'linux-i686'
+      archiveExtension = 'tar.bz2'
+    }
+    String
+
+    String phantomjsExecPath = "phantomjs-${phantomJSVersion}-${platform}/${execFilePath}"
+
+    String phantomJsFullDownloadPath = "https://phantomjs.googlecode.com/files/phantomjs-${phantomJSVersion}-${platform}.${archiveExtension}"
+
+    File phantomJSDriverLocalFile = downloadDriver(phantomJsFullDownloadPath, phantomjsExecPath, archiveExtension)
+
+    System.setProperty('phantomjs.binary.path', phantomJSDriverLocalFile.absolutePath)
+    driver = {
+      Capabilities caps = DesiredCapabilities.phantomjs()
+      def phantomJsDriver = new PhantomJSDriver(PhantomJSDriverService.createDefaultService(caps), caps)
+      phantomJsDriver.manage().window().setSize(new Dimension(1028, 768))
+
+      return phantomJsDriver
+    }
+  }
 }
 
-private File downloadDriver(String driverDownloadFullPath, String driverFileName) {
-  File destinationDirectory = new File("target/webdriver")
+private File downloadDriver(String driverDownloadFullPath, String driverFilePath, String archiveFileExtension) {
+  File destinationDirectory = new File("target/drivers")
   if (!destinationDirectory.exists()) {
     destinationDirectory.mkdirs()
   }
 
-  File driverFile = new File(destinationDirectory, driverFileName)
+  File driverFile = new File("${destinationDirectory.absolutePath}/${driverFilePath}")
 
-  String localZipPath = 'target/driver.zip'
+  String localArchivePath = "target/driver.${archiveFileExtension}"
 
   if (!driverFile.exists()) {
     def ant = new AntBuilder()
-    ant.get(src: driverDownloadFullPath, dest: localZipPath)
-    ant.unzip(src: localZipPath, dest: destinationDirectory)
-    ant.delete(file: localZipPath)
+    ant.get(src: driverDownloadFullPath, dest: localArchivePath)
+
+    if (archiveFileExtension == "zip") {
+      ant.unzip(src: localArchivePath, dest: destinationDirectory)
+    } else {
+      ant.untar(src: localArchivePath, dest: destinationDirectory, compression: 'bzip2')
+    }
+
+    ant.delete(file: localArchivePath)
     ant.chmod(file: driverFile, perm: '700')
   }
 
