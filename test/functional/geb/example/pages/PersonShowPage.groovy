@@ -1,7 +1,7 @@
 package geb.example.pages
 
 class PersonShowPage extends geb.Page {
-  static at = { $("div.show-person").displayed }
+  static at = { $("div#show-person").displayed }
 
   static content = {
     firstNameField(wait: true) { $("span#firstName") }
