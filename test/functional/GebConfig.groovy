@@ -24,7 +24,7 @@ driver = { new FirefoxDriver() }
 // http://fbflex.wordpress.com/2013/01/06/geb-quickie-automatically-download-drivers-for-chrome-and-internet-explorer/
 environments {
 
-  // run as "grails -Dgeb.env=chrome test-app"
+  // run as "grails -Dgeb.env=chrome test-app functional:"
   // See: http://code.google.com/p/selenium/wiki/ChromeDriver
   chrome {
     String chromeDriverVersion = "26.0.1383.0"
@@ -53,7 +53,7 @@ environments {
     driver = { new ChromeDriver() }
   }
 
-  // run as "grails -Dgeb.env=ie test-app"
+  // run as "grails -Dgeb.env=ie test-app functional:"
   // See: https://code.google.com/p/selenium/wiki/InternetExplorerDriver
   ie {
     String ieDriverVersion = "2.31.0"
@@ -68,6 +68,7 @@ environments {
     driver = { new InternetExplorerDriver() }
   }
 
+  // run as "grails -Dgeb.env=phantomjs test-app functional:"
   phantomjs {
     String phantomJSVersion = '1.9.0'
 
