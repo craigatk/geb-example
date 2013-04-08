@@ -90,7 +90,6 @@ environments {
       platform = 'linux-i686'
       archiveExtension = 'tar.bz2'
     }
-    String
 
     String phantomjsExecPath = "phantomjs-${phantomJSVersion}-${platform}/${execFilePath}"
 
