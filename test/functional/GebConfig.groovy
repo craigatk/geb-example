@@ -3,19 +3,15 @@
 	
 	See: http://www.gebish.org/manual/current/configuration.html
 */
-
-
-
-import org.apache.commons.lang.SystemUtils
 import org.openqa.selenium.Capabilities
 import org.openqa.selenium.Dimension
+import org.openqa.selenium.Platform
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.ie.InternetExplorerDriver
 import org.openqa.selenium.phantomjs.PhantomJSDriver
 import org.openqa.selenium.phantomjs.PhantomJSDriverService
 import org.openqa.selenium.remote.DesiredCapabilities
-
 // Use Firefox as the default driver
 // See: http://code.google.com/p/selenium/wiki/FirefoxDriver
 driver = { new FirefoxDriver() }
@@ -32,17 +28,17 @@ environments {
     String chromeDriverZipFileName
     String chromeDriverExecFileName
 
-    if (SystemUtils.IS_OS_WINDOWS) {
+    if (Platform.current.is(Platform.WINDOWS)) {
       chromeDriverZipFileName = "chromedriver_win_${chromeDriverVersion}.zip"
       chromeDriverExecFileName = "chromedriver.exe"
-    } else if (SystemUtils.IS_OS_MAC_OSX) {
+    } else if (Platform.current.is(Platform.MAC)) {
       chromeDriverZipFileName = "chromedriver_mac_${chromeDriverVersion}.zip"
       chromeDriverExecFileName = "chromedriver"
-    } else if (SystemUtils.IS_OS_LINUX) {
+    } else if (Platform.current.is(Platform.LINUX)) {
       chromeDriverZipFileName = "chromedriver_linux32_${chromeDriverVersion}.zip"
       chromeDriverExecFileName = "chromedriver"
     } else {
-      throw new RuntimeException("Unsupported operating system [${SystemUtils.OS_NAME}]")
+      throw new RuntimeException("Unsupported operating system [${Platform.current}]")
     }
 
     String chromeDriverDownloadFullPath = "https://chromedriver.googlecode.com/files/${chromeDriverZipFileName}"
@@ -76,19 +72,21 @@ environments {
     String archiveExtension
     String execFilePath
 
-    if (SystemUtils.IS_OS_WINDOWS) {
+    if (Platform.current.is(Platform.WINDOWS)) {
       execFilePath = 'phantomjs.exe'
       platform = 'windows'
       archiveExtension = 'zip'
     }
-    else if (SystemUtils.IS_OS_MAC_OSX) {
+    else if (Platform.current.is(Platform.MAC)) {
       execFilePath = '/bin/phantomjs'
       platform = 'macosx'
       archiveExtension = 'zip'
-    } else if (SystemUtils.IS_OS_LINUX) {
+    } else if (Platform.current.is(Platform.LINUX)) {
       execFilePath = '/bin/phantomjs'
       platform = 'linux-i686'
       archiveExtension = 'tar.bz2'
+    } else {
+      throw new RuntimeException("Unsupported operating system [${Platform.current}]")
     }
 
     String phantomjsExecPath = "phantomjs-${phantomJSVersion}-${platform}/${execFilePath}"
