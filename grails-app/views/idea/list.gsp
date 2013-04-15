@@ -38,11 +38,11 @@
     <g:each in="${ideaInstanceList}" status="i" var="ideaInstance">
       <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-        <td class="listTitle">
+        <td class="listTitleTest">
           <g:link action="show" id="${ideaInstance.id}">${fieldValue(bean: ideaInstance, field: "title")}</g:link>
         </td>
 
-        <td class="listDescription">
+        <td class="listDescriptionTest">
           ${fieldValue(bean: ideaInstance, field: "description")}
         </td>
 

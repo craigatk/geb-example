@@ -17,7 +17,7 @@ class IdeaListPage extends geb.Page {
 
 class IdeaListRow extends geb.Module {
   static content = {
-    titleCell(wait: true) { $("td.listTitle") }
-    descriptionCell(wait: true) { $("td.listDescription") }
+    titleCell(wait: true) { $("td.listTitleTest") }
+    descriptionCell(wait: true) { $("td.listDescriptionTest") }
   }
 }
