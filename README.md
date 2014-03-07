@@ -1,4 +1,4 @@
-Geb Examples - Gr8Conf US 2013
+Geb Examples
 ===========
 
 Contains sample Geb functional tests for a Grails application. There are tests written in both JUnit and Spock.

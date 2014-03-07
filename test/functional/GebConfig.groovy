@@ -23,25 +23,25 @@ environments {
   // run as "grails -Dgeb.env=chrome test-app functional:"
   // See: http://code.google.com/p/selenium/wiki/ChromeDriver
   chrome {
-    String chromeDriverVersion = "26.0.1383.0"
+    String chromeDriverVersion = "2.9"
 
     String chromeDriverZipFileName
     String chromeDriverExecFileName
 
     if (Platform.current.is(Platform.WINDOWS)) {
-      chromeDriverZipFileName = "chromedriver_win_${chromeDriverVersion}.zip"
+      chromeDriverZipFileName = "chromedriver_win32.zip"
       chromeDriverExecFileName = "chromedriver.exe"
     } else if (Platform.current.is(Platform.MAC)) {
-      chromeDriverZipFileName = "chromedriver_mac_${chromeDriverVersion}.zip"
+      chromeDriverZipFileName = "chromedriver_mac32.zip"
       chromeDriverExecFileName = "chromedriver"
     } else if (Platform.current.is(Platform.LINUX)) {
-      chromeDriverZipFileName = "chromedriver_linux32_${chromeDriverVersion}.zip"
+      chromeDriverZipFileName = "chromedriver_linux32.zip"
       chromeDriverExecFileName = "chromedriver"
     } else {
       throw new RuntimeException("Unsupported operating system [${Platform.current}]")
     }
 
-    String chromeDriverDownloadFullPath = "https://chromedriver.googlecode.com/files/${chromeDriverZipFileName}"
+    String chromeDriverDownloadFullPath = "http://chromedriver.storage.googleapis.com/${chromeDriverVersion}/${chromeDriverZipFileName}"
 
     File chromeDriverLocalFile = downloadDriver(chromeDriverDownloadFullPath, chromeDriverExecFileName, 'zip')
 
@@ -52,11 +52,12 @@ environments {
   // run as "grails -Dgeb.env=ie test-app functional:"
   // See: https://code.google.com/p/selenium/wiki/InternetExplorerDriver
   ie {
-    String ieDriverVersion = "2.31.0"
+    String ieDriverVersion = "2.40.0"
+    String ieDriverVersionMajor = ieDriverVersion.substring(0, ieDriverVersion.lastIndexOf('.'))
 
     String ieDriverZipFileName = "IEDriverServer_Win32_${ieDriverVersion}.zip"
 
-    String ieDriverDownloadFullPath = "https://selenium.googlecode.com/files/${ieDriverZipFileName}"
+    String ieDriverDownloadFullPath = "http://selenium-release.storage.googleapis.com/${ieDriverVersionMajor}/${ieDriverZipFileName}"
 
     File ieDriverLocalFile = downloadDriver(ieDriverDownloadFullPath, "IEDriverServer.exe", 'zip')
 
@@ -66,7 +67,7 @@ environments {
 
   // run as "grails -Dgeb.env=phantomjs test-app functional:"
   phantomjs {
-    String phantomJSVersion = '1.9.0'
+    String phantomJSVersion = '1.9.2'
 
     String platform
     String archiveExtension
