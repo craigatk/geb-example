@@ -47,6 +47,7 @@ grails.project.dependency.resolution = {
     }
 
     dependencies {
+        test "org.gebish:geb-junit3:${gebVersion}"
         test "org.gebish:geb-junit4:${gebVersion}"
         test "org.gebish:geb-spock:${gebVersion}"
 

@@ -2,13 +2,12 @@ package geb.example
 
 import geb.example.pages.IdeaListPage
 import geb.example.remote.IdeaRemoteControl
-import org.junit.Test
 
-class ListIdeasFunctionalTests extends geb.junit4.GebReportingTest {
+// JUnit3-style test
+class ListIdeasFunctionalTests extends geb.junit3.GebReportingTest {
   IdeaRemoteControl ideaRemoteControl = new IdeaRemoteControl()
 
-  @Test
-  void shouldListIdeas() {
+  void testShouldListIdeas() {
     ideaRemoteControl.deleteAllIdeas()
 
     List<Idea> ideas = (1..5).collect { i ->
