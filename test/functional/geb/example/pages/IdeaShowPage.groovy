@@ -4,8 +4,8 @@ class IdeaShowPage extends geb.Page {
   static at = { $("div#show-idea").displayed }
 
   static content = {
-    titleValueElement(wait: true) { $("span#titleValue") }
-    descriptionValueElement(wait: true) { $("span#descriptionValue") }
+    titleValueElement { $("span#titleValue") }
+    descriptionValueElement { $("span#descriptionValue") }
   }
 
   String getTitleText() {

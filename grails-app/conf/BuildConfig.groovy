@@ -21,9 +21,9 @@ grails.project.fork = [
         console: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256]
 ]
 
-def gebVersion = "0.9.2"
-def phantomJSVersion = "1.0.4"
-def webdriverVersion = "2.40.0"
+def gebVersion = "0.10.0"
+def ghostDriverVersion = "1.1.0"
+def webdriverVersion = "2.43.1" // Selenium version >= 2.44.0 won't work with ghostdriver until this issue is fixed https://github.com/detro/ghostdriver/issues/397
 
 grails.project.dependency.resolver = "maven" // or ivy
 grails.project.dependency.resolution = {
@@ -56,26 +56,29 @@ grails.project.dependency.resolution = {
         test "org.seleniumhq.selenium:selenium-firefox-driver:${webdriverVersion}"
         test "org.seleniumhq.selenium:selenium-ie-driver:${webdriverVersion}"
 
-        test("com.github.detro.ghostdriver:phantomjsdriver:${phantomJSVersion}") {
+        test("com.github.detro.ghostdriver:phantomjsdriver:${ghostDriverVersion}") {
             transitive = false
         }
+
+        test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
     }
 
     plugins {
         // plugins for the build system only
-        build ":tomcat:7.0.52.1"
+        build ":tomcat:7.0.55"
 
         // plugins for the compile step
-        compile ":scaffolding:2.0.2"
-        compile ':cache:1.1.1'
+        compile ":scaffolding:2.1.2"
+        compile ':cache:1.1.8'
 
         // plugins needed at runtime but not for compilation
-        runtime ":hibernate:3.6.10.9" // or ":hibernate4:4.3.4"
-        runtime ":database-migration:1.3.8"
-        runtime ":jquery:1.11.0.2"
-        runtime ":resources:1.2.7"
+        runtime ":hibernate4:4.3.6.1" // or ":hibernate:3.6.10.18"
+        runtime ":database-migration:1.4.0"
+        runtime ":jquery:1.11.1"
 
-        test ":remote-control:1.4"
+        compile ":asset-pipeline:2.1.1"
+
+        test ":remote-control:1.5"
         test ":geb:${gebVersion}"
     }
 }

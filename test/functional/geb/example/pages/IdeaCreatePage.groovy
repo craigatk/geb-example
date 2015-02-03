@@ -5,10 +5,10 @@ class IdeaCreatePage extends geb.Page {
   static at = { $("div#create-idea").displayed }
 
   static content = {
-    titleField(wait: true) { $("input#title") }
-    descriptionField(wait: true) { $("textarea#description") }
+    titleField { $("input#title") }
+    descriptionField { $("textarea#description") }
 
-    createButton(wait: true, to: IdeaShowPage) { $("input#create") }
+    createButton(to: IdeaShowPage) { $("input#create") }
   }
 
   IdeaShowPage createIdea(String title, String description) {

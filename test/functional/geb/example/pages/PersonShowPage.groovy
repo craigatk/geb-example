@@ -4,15 +4,15 @@ class PersonShowPage extends geb.Page {
   static at = { $("div#show-person").displayed }
 
   static content = {
-    firstNameField(wait: true) { $("span#firstName") }
-    middleInitialField(wait: true) { $("span#middleInitial") }
-    lastNameField(wait: true) { $("span#lastName") }
+    firstNameField { $("span#firstName") }
+    middleInitialField { $("span#middleInitial") }
+    lastNameField { $("span#lastName") }
 
-    streetAddressField(wait: true) { $("span#streetAddress") }
-    streetAddress2Field(wait: true) { $("span#streetAddress2") }
-    cityField(wait: true) { $("span#city") }
-    stateField(wait: true) { $("span#state") }
-    zipCodeField(wait: true) { $("span#zipCode") }
+    streetAddressField { $("span#streetAddress") }
+    streetAddress2Field { $("span#streetAddress2") }
+    cityField { $("span#city") }
+    stateField { $("span#state") }
+    zipCodeField { $("span#zipCode") }
   }
 
   String getFirstName() { firstNameField.text() }

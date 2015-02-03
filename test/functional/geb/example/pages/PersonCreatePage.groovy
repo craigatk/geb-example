@@ -6,15 +6,15 @@ class PersonCreatePage extends geb.Page {
   static url = "person/create"
 
   static content = {
-    firstNameField(wait: true) { $("input#firstName") }
-    middleInitialField(wait: true) { $("input#middleInitial") }
-    lastNameField(wait: true) { $("input#lastName") }
+    firstNameField { $("input#firstName") }
+    middleInitialField { $("input#middleInitial") }
+    lastNameField { $("input#lastName") }
 
-    streetAddressField(wait: true) { $("input#streetAddress") }
-    streetAddress2Field(wait: true) { $("input#streetAddress2") }
-    cityField(wait: true) { $("input#city") }
-    stateField(wait: true) { $("input#state") }
-    zipCodeField(wait: true) { $("input#zipCode") }
+    streetAddressField { $("input#streetAddress") }
+    streetAddress2Field { $("input#streetAddress2") }
+    cityField { $("input#city") }
+    stateField { $("input#state") }
+    zipCodeField { $("input#zipCode") }
 
     createButton(wait: true, to: PersonShowPage) { $("input#create") }
   }

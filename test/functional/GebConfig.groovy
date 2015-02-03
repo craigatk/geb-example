@@ -3,6 +3,7 @@
 	
 	See: http://www.gebish.org/manual/current/configuration.html
 */
+
 import org.openqa.selenium.Capabilities
 import org.openqa.selenium.Dimension
 import org.openqa.selenium.Platform
@@ -12,6 +13,10 @@ import org.openqa.selenium.ie.InternetExplorerDriver
 import org.openqa.selenium.phantomjs.PhantomJSDriver
 import org.openqa.selenium.phantomjs.PhantomJSDriverService
 import org.openqa.selenium.remote.DesiredCapabilities
+
+// http://www.gebish.org/manual/current/configuration.html#waiting_for_base_navigator
+baseNavigatorWaiting = true
+
 // Use Firefox as the default driver
 // See: http://code.google.com/p/selenium/wiki/FirefoxDriver
 driver = { new FirefoxDriver() }
@@ -23,7 +28,7 @@ environments {
   // run as "grails -Dgeb.env=chrome test-app functional:"
   // See: http://code.google.com/p/selenium/wiki/ChromeDriver
   chrome {
-    String chromeDriverVersion = "2.9"
+    String chromeDriverVersion = "2.14"
 
     String chromeDriverZipFileName
     String chromeDriverExecFileName
@@ -52,7 +57,7 @@ environments {
   // run as "grails -Dgeb.env=ie test-app functional:"
   // See: https://code.google.com/p/selenium/wiki/InternetExplorerDriver
   ie {
-    String ieDriverVersion = "2.40.0"
+    String ieDriverVersion = "2.43.0"
     String ieDriverVersionMajor = ieDriverVersion.substring(0, ieDriverVersion.lastIndexOf('.'))
 
     String ieDriverZipFileName = "IEDriverServer_Win32_${ieDriverVersion}.zip"
