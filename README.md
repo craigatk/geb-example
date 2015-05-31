@@ -33,9 +33,13 @@ To resolve this error, open IE, click on the settings gear icon, click 'Internet
 
 ## Running tests in Phantom JS
 
+### Ghostdriver won't work until this issue is fixed https://github.com/detro/ghostdriver/issues/397
+
 Finally, to execute all the tests in Phantom JS, run:
 ```
 grails -Dgeb.env=phantomjs test-app functional:
 ```
+
+## Browser config
 
 See ```test/functional/GebConfig.groovy``` for details on how the different browsers are configured. GebConfig.groovy also has the code to automatically download the Chrome, IE, and PhantomJS driver libraries.

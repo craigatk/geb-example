@@ -57,7 +57,7 @@ environments {
   // run as "grails -Dgeb.env=ie test-app functional:"
   // See: https://code.google.com/p/selenium/wiki/InternetExplorerDriver
   ie {
-    String ieDriverVersion = "2.43.0"
+    String ieDriverVersion = "2.45.0"
     String ieDriverVersionMajor = ieDriverVersion.substring(0, ieDriverVersion.lastIndexOf('.'))
 
     String ieDriverZipFileName = "IEDriverServer_Win32_${ieDriverVersion}.zip"
