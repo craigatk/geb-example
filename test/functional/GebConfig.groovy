@@ -72,7 +72,7 @@ environments {
 
   // run as "grails -Dgeb.env=phantomjs test-app functional:"
   phantomjs {
-    String phantomJSVersion = '1.9.2'
+    String phantomJSVersion = '1.9.8'
 
     String platform
     String archiveExtension
@@ -97,7 +97,7 @@ environments {
 
     String phantomjsExecPath = "phantomjs-${phantomJSVersion}-${platform}/${execFilePath}"
 
-    String phantomJsFullDownloadPath = "https://phantomjs.googlecode.com/files/phantomjs-${phantomJSVersion}-${platform}.${archiveExtension}"
+    String phantomJsFullDownloadPath = "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${phantomJSVersion}-${platform}.${archiveExtension}"
 
     File phantomJSDriverLocalFile = downloadDriver(phantomJsFullDownloadPath, phantomjsExecPath, archiveExtension)
 

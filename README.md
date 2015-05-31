@@ -33,8 +33,6 @@ To resolve this error, open IE, click on the settings gear icon, click 'Internet
 
 ## Running tests in Phantom JS
 
-### Ghostdriver won't work until this issue is fixed https://github.com/detro/ghostdriver/issues/397
-
 Finally, to execute all the tests in Phantom JS, run:
 ```
 grails -Dgeb.env=phantomjs test-app functional:
