@@ -72,14 +72,18 @@ environments {
 
   // run as "grails -Dgeb.env=phantomjs test-app functional:"
   phantomjs {
-    String phantomJSVersion = '1.9.8'
+    String phantomJSVersion = '2.0.0'
 
     String platform
     String archiveExtension
     String execFilePath
 
     if (Platform.current.is(Platform.WINDOWS)) {
-      execFilePath = 'phantomjs.exe'
+      if (phantomJSVersion.startsWith('1')) {
+          execFilePath = 'phantomjs.exe'
+      } else {
+          execFilePath = 'bin/phantomjs.exe'
+      }
       platform = 'windows'
       archiveExtension = 'zip'
     }
