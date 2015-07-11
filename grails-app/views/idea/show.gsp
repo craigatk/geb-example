@@ -49,6 +49,18 @@
       </li>
     </g:if>
 
+    <g:if test="${ideaInstance?.rating}">
+      <li class="fieldcontain">
+        <span id="rating-label" class="property-label"><g:message code="idea.rating.label" default="Rating"/></span>
+
+        <span class="property-value" aria-labelledby="rating-label" id="ratingValue">
+          <g:fieldValue bean="${ideaInstance}" field="rating"/>
+        </span>
+
+      </li>
+    </g:if>
+
+
   </ol>
   <g:form>
     <fieldset class="buttons">

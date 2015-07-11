@@ -18,3 +18,13 @@
   <g:textArea name="description" cols="40" rows="5" maxlength="1000" required="" value="${ideaInstance?.description}"/>
 </div>
 
+<div class="fieldcontain">
+  <label for="rating">
+    Rating
+  </label>
+
+  <div id="rating-slider" style="width: 400px; display: inline-block; margin-left: 10px; margin-right: 10px;"></div>
+  <span id="rating-amount"></span>
+  <g:hiddenField name="rating" id="rating"></g:hiddenField>
+</div>
+

@@ -16,9 +16,10 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 		<g:layoutHead/>
 		<asset:stylesheet href="jquery-ui.css"/>
+    <asset:stylesheet href="slider-custom.css"/>
 		<asset:javascript src="jquery-2.1.4.js"/>
 		<asset:javascript src="jquery-ui.js"/>
-		<asset:javascript src="application.js"/>
+		<asset:javascript src="slider-custom.js"/>
 	</head>
 	<body>
 		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>
