@@ -6,6 +6,8 @@ class IdeaController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+    PatentService patentService
+
     def index() {
         redirect(action: "list", params: params)
     }
@@ -98,5 +100,15 @@ class IdeaController {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'idea.label', default: 'Idea'), id])
             redirect(action: "show", id: id)
         }
+    }
+
+    def sendToPatentOffice(Long id) {
+        Idea idea = Idea.get(id)
+
+        patentService.sendToPatentOffice(idea)
+
+        flash.message = 'Sent to patent office'
+
+        redirect(action: 'show', params: [id: id])
     }
 }

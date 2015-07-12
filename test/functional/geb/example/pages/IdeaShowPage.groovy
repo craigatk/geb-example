@@ -6,6 +6,8 @@ class IdeaShowPage extends geb.Page {
   static content = {
     titleValueElement { $("span#titleValue") }
     descriptionValueElement { $("span#descriptionValue") }
+
+    sendToPatentOfficeButton(to: IdeaShowPage) { $("#send-to-patent-office") }
   }
 
   String getTitleText() {
@@ -14,5 +16,11 @@ class IdeaShowPage extends geb.Page {
 
   String getDescriptionText() {
     descriptionValueElement.text()
+  }
+
+  IdeaShowPage submitIdeaToPatentOffice() {
+    sendToPatentOfficeButton.click()
+
+    return browser.page
   }
 }
