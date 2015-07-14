@@ -21,7 +21,7 @@ grails.project.fork = [
         console: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256]
 ]
 
-def gebVersion = "0.10.0"
+def gebVersion = "0.12.0"
 def ghostDriverVersion = "1.2.0"
 def webdriverVersion = "2.45.0"
 
