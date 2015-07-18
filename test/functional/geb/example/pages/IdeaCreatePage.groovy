@@ -17,18 +17,23 @@ class IdeaCreatePage extends geb.Page {
     descriptionField.value(description)
 
     if (rating) {
-      // Slider is 400 pixels wide and starts at 1, so each notch above 1 is 100 pixels apart
-      Integer numPixels = (rating - 1) * 100
-
-      interact {
-        clickAndHold(ratingSliderHandle)
-        moveByOffset(numPixels, 0)
-        release()
-      }
+      moveRatingSlider(rating)
     }
 
     createButton.click()
 
     return browser.page
   }
+
+  void moveRatingSlider(Integer rating) {
+    // Slider is 400 pixels wide and starts at 1, so each notch above 1 is 100 pixels apart
+    Integer numPixels = (rating - 1) * 100
+
+    interact {
+      clickAndHold(ratingSliderHandle)
+      moveByOffset(numPixels, 0)
+      release()
+    }
+  }
+
 }
