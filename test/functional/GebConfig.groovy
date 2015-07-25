@@ -17,6 +17,8 @@ import org.openqa.selenium.remote.DesiredCapabilities
 // http://www.gebish.org/manual/current/configuration.html#waiting_for_base_navigator
 baseNavigatorWaiting = true
 
+atCheckWaiting = true
+
 // Use Firefox as the default driver
 // See: http://code.google.com/p/selenium/wiki/FirefoxDriver
 driver = { new FirefoxDriver() }
@@ -28,7 +30,7 @@ environments {
   // run as "grails -Dgeb.env=chrome test-app functional:"
   // See: http://code.google.com/p/selenium/wiki/ChromeDriver
   chrome {
-    String chromeDriverVersion = "2.14"
+    String chromeDriverVersion = "2.16"
 
     String chromeDriverZipFileName
     String chromeDriverExecFileName
@@ -57,7 +59,7 @@ environments {
   // run as "grails -Dgeb.env=ie test-app functional:"
   // See: https://code.google.com/p/selenium/wiki/InternetExplorerDriver
   ie {
-    String ieDriverVersion = "2.45.0"
+    String ieDriverVersion = "2.46.0"
     String ieDriverVersionMajor = ieDriverVersion.substring(0, ieDriverVersion.lastIndexOf('.'))
 
     String ieDriverZipFileName = "IEDriverServer_Win32_${ieDriverVersion}.zip"
