@@ -19,6 +19,8 @@ class SearchGoogleFunctionalSpec extends GebReportingSpec {
 
         waitFor { $("#search").displayed }
 
+        slowDown()
+
         $("h3.r").first().click()
 
         then:
@@ -36,9 +38,17 @@ class SearchGoogleFunctionalSpec extends GebReportingSpec {
 
         searchButton.click()
 
+        slowDown()
+
         searchResultsLinks.first().click()
 
         then:
         assert at(GebHomePage)
+    }
+
+    private void slowDown() {
+        if (System.getProperty('slow')) {
+            Thread.sleep(2000)
+        }
     }
 }

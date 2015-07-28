@@ -22,6 +22,8 @@ class IdeaCreatePage extends geb.Page {
       moveRatingSliderWithMouse(rating)
     }
 
+    slowDown()
+
     createButton.click()
 
     return browser.page
@@ -46,6 +48,8 @@ class IdeaCreatePage extends geb.Page {
       moveRatingSliderWithKeyboard(rating)
     }
 
+    slowDown()
+
     createButton.click()
 
     return browser.page
@@ -59,4 +63,9 @@ class IdeaCreatePage extends geb.Page {
     }
   }
 
+  private void slowDown() {
+    if (System.getProperty('slow')) {
+      Thread.sleep(2000)
+    }
+  }
 }
