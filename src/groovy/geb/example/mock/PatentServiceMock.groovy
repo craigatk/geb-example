@@ -10,8 +10,4 @@ class PatentServiceMock extends PatentService {
     def sendToPatentOffice(Idea idea) {
         ideasSentToPatentOffice << idea
     }
-
-    void reset() {
-        ideasSentToPatentOffice = []
-    }
 }

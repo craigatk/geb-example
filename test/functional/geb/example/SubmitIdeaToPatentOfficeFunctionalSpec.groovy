@@ -5,20 +5,9 @@ import geb.example.remote.IdeaRemoteControl
 import geb.spock.GebReportingSpec
 
 class SubmitIdeaToPatentOfficeFunctionalSpec extends GebReportingSpec {
-    IdeaRemoteControl ideaRemoteControl
-
-    def setup() {
-        ideaRemoteControl = new IdeaRemoteControl()
-
-        ideaRemoteControl.resetMockPatentService()
-    }
-
-    def cleanup() {
-        ideaRemoteControl.resetMockPatentService()
-    }
-
     def 'should submit idea to patent office'() {
         given:
+        IdeaRemoteControl ideaRemoteControl = new IdeaRemoteControl()
         IdeaCreatePage ideaCreatePage = to(IdeaCreatePage)
 
         when:
@@ -31,7 +20,8 @@ class SubmitIdeaToPatentOfficeFunctionalSpec extends GebReportingSpec {
 
         then:
         Idea newIdea = ideaRemoteControl.findByTitle(ideaTitle)
-
-        assert ideaRemoteControl.findIdeasSubmittedToPatentOffice()*.id.contains(newIdea.id)
+        List<Idea> ideasSubmittedToPatentOffice = ideaRemoteControl
+                .findIdeasSubmittedToPatentOffice()
+        assert ideasSubmittedToPatentOffice*.id.contains(newIdea.id)
     }
 }

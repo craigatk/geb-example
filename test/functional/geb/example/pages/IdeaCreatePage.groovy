@@ -60,12 +60,14 @@ class IdeaCreatePage extends geb.Page {
 
     numberOfKeystrokes.times {
       ratingSliderHandle << Keys.ARROW_RIGHT
+
+      slowDown(500)
     }
   }
 
-  private void slowDown() {
+  private void slowDown(long time = 1500) {
     if (System.getProperty('slow')) {
-      Thread.sleep(2000)
+      Thread.sleep(time)
     }
   }
 }

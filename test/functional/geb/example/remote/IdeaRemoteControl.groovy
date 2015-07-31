@@ -31,12 +31,6 @@ class IdeaRemoteControl {
     }
   }
 
-  void resetMockPatentService() {
-    remote {
-      ctx.patentService.reset()
-    }
-  }
-
   List<Idea> findIdeasSubmittedToPatentOffice() {
     remote {
       return ctx.patentService.ideasSentToPatentOffice
