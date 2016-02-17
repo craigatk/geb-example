@@ -21,9 +21,9 @@ grails.project.fork = [
         console: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256]
 ]
 
-def gebVersion = "0.12.1"
+def gebVersion = "0.13.0"
 def ghostDriverVersion = "1.2.0"
-def webdriverVersion = "2.45.0"
+def webdriverVersion = "2.52.0"
 
 grails.project.dependency.resolver = "maven" // or ivy
 grails.project.dependency.resolution = {
