@@ -23,9 +23,9 @@ driver = { new FirefoxDriver() }
 environments {
 
   // run as "grails -Dgeb.env=chrome test-app functional:"
-  // See: http://code.google.com/p/selenium/wiki/ChromeDriver
+  // See: https://sites.google.com/a/chromium.org/chromedriver/
   chrome {
-    String chromeDriverVersion = "2.16"
+    String chromeDriverVersion = "2.21"
 
     String chromeDriverZipFileName
     String chromeDriverExecFileName
