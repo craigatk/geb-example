@@ -22,7 +22,6 @@ grails.project.fork = [
 ]
 
 def gebVersion = "0.13.1"
-def ghostDriverVersion = "1.2.0"
 def webdriverVersion = "2.52.0"
 
 grails.project.dependency.resolver = "maven" // or ivy
@@ -55,15 +54,6 @@ grails.project.dependency.resolution = {
         test "org.seleniumhq.selenium:selenium-chrome-driver:${webdriverVersion}"
         test "org.seleniumhq.selenium:selenium-firefox-driver:${webdriverVersion}"
         test "org.seleniumhq.selenium:selenium-ie-driver:${webdriverVersion}"
-
-        /*test("com.github.detro:phantomjsdriver:${ghostDriverVersion}") {
-            transitive = false
-        }*/
-
-        // Patched version of Ghostdriver until this issue is fixed https://github.com/detro/ghostdriver/issues/397
-        test("com.codeborne:phantomjsdriver:1.2.1") {
-            transitive = false
-        }
 
         test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
     }
