@@ -56,6 +56,9 @@ grails.project.dependency.resolution = {
         test "org.seleniumhq.selenium:selenium-ie-driver:${webdriverVersion}"
 
         test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
+
+        // For downloading browser-specific drivers that browsers like Chrome and IE require
+        test "io.github.bonigarcia:webdrivermanager:1.3.1"
     }
 
     plugins {
