@@ -1,6 +1,7 @@
 package geb.example
 
 import geb.example.pages.GebHomePage
+import geb.example.pages.GebManualPage
 import geb.example.pages.GoogleHomePage
 import geb.spock.GebReportingSpec
 import spock.lang.Ignore
@@ -44,6 +45,27 @@ class SearchGoogleFunctionalSpec extends GebReportingSpec {
 
         then:
         assert at(GebHomePage)
+    }
+
+    // Comment out the @Ignore line below if you want to run this test
+    @Ignore
+    def 'should use Google to find Geb home page with type-safe Page Objects'() {
+        given:
+        GoogleHomePage googleHomePage = to GoogleHomePage
+
+        when:
+        googleHomePage.searchFor('Geb')
+
+        slowDown()
+
+        GebHomePage gebHomePage = googleHomePage.clickFirstResult(GebHomePage)
+
+        slowDown()
+
+        gebHomePage.clickManualLink()
+
+        then:
+        assert at(GebManualPage)
     }
 
     private void slowDown() {
